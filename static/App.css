@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css?family=Tangerine");
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    font-family: "Public Sans", sans-serif;
+    font-size: 1.2rem;
+    min-height: 100%;
+}
+.grid-container > *{
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+.boton{
+    background-color: #004a85;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    width: 80px;height: 40px;
+}
+.header{
+    grid-area: header;
+    background-color: #004a85;
+}
+.sidebarC{
+    grid-area: sidebarC;
+    background-color: #f2f2f2;
+}
+.sidebarD{
+    grid-area: sidebarD;
+    background-color: #f2f2f2;
+}
+.sidebarJ{
+    grid-area: sidebarJ;
+    background-color: #f2f2f2;
+}
+.sidebarL{
+    grid-area: sidebarL;
+    background-color: #f2f2f2;
+}
+.sidebarM1{
+    grid-area: sidebarM1;
+    background-color: #f2f2f2;
+}
+.sidebarM2{
+    grid-area: sidebarM2;
+    background-color: #f2f2f2;
+}
+.sidebarAprox{
+    grid-area: sidebarAprox;
+    background-color: #f2f2f2;
+}
+.textos{
+    grid-area: textos;
+    background-color: #f2f2f2;
+}
+.textos2{
+    grid-area: textos2;
+    background-color: #f2f2f2;
+}
+.readme{
+    grid-area: readme;
+    background-color: #f2f2f2;
+}
+.separador{
+    grid-area: separador;
+    background-color: #004a85;
+}
+.separador2{
+    grid-area: separador2;
+    background-color: #004a85;
+}
+.footer{
+    grid-area: footer;
+    background-color: #004a85;
+}
+.grid-container{
+    display: grid;
+    gap: 10px;
+    grid-template:
+    "header" 100px
+    "textos" auto
+    "sidebarC"100px
+    "sidebarD"100px
+    "sidebarJ"100px
+    "sidebarL"100px
+    "sidebarM1"100px
+    "sidebarM2"100px
+    "separador" 30px
+    "textos2" auto
+    "sidebarAprox" auto
+    "separador" 30px
+    "readme" auto
+    "footer" 50px;
+}
+
+@media(min-width:700px){
+    .grid-container{
+        grid-template:
+        "header  header header header  header header" 100px
+        "textos textos textos textos textos textos" auto
+        "sidebarC sidebarC sidebarD sidebarD sidebarJ sidebarJ"   50px
+        "sidebarL sidebarL sidebarM1 sidebarM1 sidebarM2 sidebarM2"   50px
+        "separador  separador separador separador  separador separador" 30px
+        "textos2 textos2 textos2 sidebarAprox sidebarAprox sidebarAprox" auto
+        "separador2  separador2 separador2 separador2  separador2 separador2" 30px
+        "readme readme readme readme readme readme" auto
+        "footer  footer footer footer  footer footer" 50px/
+        auto auto auto auto auto auto
+        ;
+    }
+}

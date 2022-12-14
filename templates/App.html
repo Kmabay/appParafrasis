@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIL paráfrasis</title>
+    <link href="{{ url_for('static',filename='App.css') }}" rel="stylesheet">
+</head>
+<body class="grid-container">
+    <header class="header">
+        <div style="text-align: center;color: aliceblue;">
+            Proyecto Paráfrasis<br>
+            Grupo de Ingeniería Lingüistica<br>
+            Instituto de Ingeniería UNAM
+        </div>
+    </header>
+
+    <nav class="sidebarC">
+        <p  id="dist" rows="10" cols="30"name="resulta2"
+            readonly placeholder="Distancia">
+            Similitud Coseno: {{resulta2}}
+        </p>
+    </nav>
+    <nav class="sidebarD">
+        <p  id="dist" rows="10" cols="30"name="resulta2"
+            readonly placeholder="Distancia">
+            Coeficiente de Sorensen-Dice: {{resulta3}}
+        </p>
+    </nav>
+    <nav class="sidebarJ">
+        <p  id="dist" rows="10" cols="30"name="resulta2"
+            readonly placeholder="Distancia">
+            Índice de Jaccard: {{resulta4}}
+        </p>
+    </nav>
+    <nav class="sidebarL">
+        <p  id="dist" rows="10" cols="30"name="resulta2"
+            readonly placeholder="Distancia">
+            Distancia de Levenshtein: {{resulta5}}
+        </p>
+    </nav>
+    <nav class="sidebarM1">
+        <p  id="dist" rows="10" cols="30"name="resulta2"
+            readonly placeholder="Distancia">
+            BERT uncased: {{resulta6}}
+        </p>
+    </nav>
+    <nav class="sidebarM2">
+        <p  id="dist" rows="10" cols="30"name="resulta2"
+            readonly placeholder="Distancia">
+            SENTENCE-CROBI: {{resulta7}}
+        </p>
+    </nav>
+
+    <form class="textos" action="{{url_for('Distancia')}}"method="post">
+        <article class="textos">
+            <br><br>
+            <textarea id="dat1"
+                name="dat1" cols="50"rows="10" placeholder=" Escribe tu primer texto a comparar"
+                
+            >{{textoA}}</textarea>
+            <textarea id="dat2"
+                name="dat2" cols="50"rows="10"placeholder=" Escribe tu segundo texto a comparar"
+                
+            >{{textoB}}</textarea>
+            <br>
+            <button class="boton" type="submit"onclick="Check()">Enviar</button>
+            <button class="boton" type="reset">Borrar</button>
+
+        </article>
+    </form>
+    <form class="textos2" action="{{url_for('Distancia2')}}"method="post">
+        <article class="textos2">
+            <br>
+            <textarea id="dat3"
+                name="dat3" cols="30"rows="20" placeholder=" Primera cadena a comparar"
+                
+            >{{textoC}}</textarea>
+            <textarea id="dat4"
+                name="dat4" cols="30"rows="20"placeholder=" Segunda cadena a comparar"
+                
+            >{{textoD}}</textarea>
+            <br>
+            <label for="vol">Número de oraciones máximas (1-20):</label>
+            <input type="range" id="vol" name="vol" min="1" max="20">
+            <button class="boton" type="submit"onclick="Check()">Enviar</button>
+            <button class="boton" type="reset">Borrar</button>
+            <br>
+        </article>
+    </form>
+
+    <nav class="sidebarAprox">
+        <p   style="text-align: center;font-size: medium;" readonly placeholder="Distancia2">
+            Los {{number}} resultados más altos:
+            <br> {{resulta8}}
+        </p>
+    </nav>
+    <nav class="separador">
+        <div style="text-align: center;color: aliceblue;font-size: x-small;">
+        </div>
+    </nav>
+    <nav class="separador2">
+        <div style="text-align: center;color: aliceblue;font-size: x-small;">
+        </div>
+    </nav>
+    <nav class="readme">
+        <div  style="text-align: center;color: rgb(0, 0, 0);font-size: small;">
+            <br>
+            <h4>Acerca de</h4>
+            <p style="text-align: justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suspendisse faucibus interdum posuere lorem ipsum dolor sit. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit amet. Adipiscing tristique risus nec feugiat. Imperdiet dui accumsan sit amet. Cursus vitae congue mauris rhoncus aenean vel. Et molestie ac feugiat sed. 
+                <br>Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu. Orci eu lobortis elementum nibh tellus molestie. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Proin fermentum leo vel orci porta. Mi tempus imperdiet nulla malesuada pellentesque elit. In nisl nisi scelerisque eu ultrices vitae. Vel facilisis volutpat est velit egestas dui. Semper feugiat nibh sed pulvinar proin.
+            </p>
+            <br>
+            
+            <h4>Participantes</h4>
+            <p style="text-align: justify">
+                Orci eu lobortis elementum nibh tellus molestie. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Proin fermentum leo vel orci porta. 
+            </p>
+            <br>
+            <h4>Agradecimientos</h4>
+            <p style="text-align: justify">
+                Morbi tempus iaculis urna id volutpat. Velit ut tortor pretium viverra suspendisse. In iaculis nunc sed augue lacus viverra vitae. Id consectetur purus ut faucibus pulvinar elementum. Vitae congue mauris rhoncus aenean vel. Facilisis mauris sit amet massa.
+            </p>
+            
+            <br><br>
+    </div>
+    </nav>
+    <footer class="footer">
+        <div style="text-align: center;color: aliceblue;font-size: x-small;">
+            <a href="#" style="color: aliceblue">Términos de uso</a><br><br>
+            Grupo de Ingeniería Lingüistica | Instituto de Ingeniería UNAM, Circuito Escolar s/n, Ciudad Universitaria, Delegación Coyoacán,
+            México D.F., C.P. 04510, Teléfono +52(55)5623-3600
+            <br><br>
+        </div>
+
+    </footer>
+</body>
+</html>
