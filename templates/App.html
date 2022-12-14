@@ -10,13 +10,13 @@
 <body class="grid-container">
     <header class="header">
         <div style="text-align: center;color: aliceblue;">
-            Proyecto Paráfrasis<br>
+            AppParáfrasis<br>
             Grupo de Ingeniería Lingüistica<br>
             Instituto de Ingeniería UNAM
         </div>
     </header>
     <nav class="instrucciones1" style="text-align: left;font-size: medium;">
-        <p>Información: En las siguientes cajas de texto puede usted almacenar dos enunciados distintos para medir la similitud semántica entre ellos, según nuestra selección de algoritmos.</p>
+        <p>Información: En las siguientes cajas de texto puede usted almacenar dos enunciados distintos para comprobar la similitud semántica entre ellos, según nuestra selección de algoritmos.</p>
     </nav>
     <nav class="sidebarC">
         <p  id="dist" rows="10" cols="30"name="resulta2"
@@ -73,7 +73,7 @@
         </article>
     </form>
     <nav class="instrucciones2"style="text-align: left;font-size: medium;">
-        <p>Información: En éstas otras cajas de texto, al introducir una secuencia de oraciones delimitadas por un punto, puede consultar las comparaciones con mayor similitud según el algoritmo que ustede escoja.</p>
+        <p>Información: En éstas otras cajas de texto, al introducir una secuencia de oraciones delimitadas por un punto, puede consultar las comparaciones en orden descendente con mayor similitud.</p>
     </nav>
     <form class="textos2" action="{{url_for('Distancia2')}}"method="post">
         <article class="textos2">
@@ -88,18 +88,28 @@
             >{{textoD}}</textarea>
             <br>
             <label for="vol">Número de oraciones máximas (1-20):</label>
-            <input type="range" id="vol" name="vol" min="1" max="20">
+            <input type="range" id="vol" name="vol" min="1" max="19">
             <button class="boton" type="submit"onclick="Check()">Enviar</button>
             <button class="boton" type="reset">Borrar</button>
             <br>
         </article>
     </form>
 
-    <nav class="sidebarAprox">
-        <p   style="text-align: center;font-size: medium;" readonly placeholder="Distancia2">
-            Los {{number}} resultados más altos:
-            <br> {{resulta8}}
-        </p>
+    <nav class="sidebarAprox"  style="font-size: small;">
+        <table>
+            <tr>
+                {% for header in headings %}
+                <th>{{header}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in data %}
+            <tr>
+                {% for cell in row %}
+                <td>{{cell}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
     </nav>
     <nav class="separador">
         <div style="text-align: center;color: aliceblue;font-size: x-small;">
@@ -114,7 +124,7 @@
             <br>
             <h4 style="text-align: left">ACERCA DE</h4>
             <p style="text-align: justify">
-                AppParafrasis es una aplicación para la detección automática de paráfrasis que permite una comparación entre diferentes técnicas y algoritmos. Es capaz de trabajar con enunciados completos o bien haciendo un ránking the oraciones comparadas por pares entre dos textos.
+                AppParáfrasis es una aplicación para la detección automática de paráfrasis que permite una comparación entre diferentes técnicas y algoritmos. Es capaz de trabajar con enunciados completos o bien haciendo un ránking the oraciones comparadas por pares entre dos textos.
             </p>
             <br>
             

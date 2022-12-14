@@ -71,9 +71,11 @@ def Distancia():
     dM2=round(dM1-(random()/100),3)
 
     return render_template("/App.html",textoA=format(req.form['dat1']),textoB=format(req.form['dat2']),resulta2=dCoseno,resulta3=dDice,resulta4=dJaccard,resulta5=dLev,resulta6=dM1,resulta7=dM2)
+
 @app.route("/Distancia2",methods=["GET","POST"])
 def Distancia2():
     import os
+    import pandas as pd
     try:
         import textdistance
     except ModuleNotFoundError:
@@ -83,84 +85,37 @@ def Distancia2():
         text1=req.form["dat3"]
         text2=req.form["dat4"]
     
-    def Aproximadas(text1,text2,num):
+    def Aproximadas(text1,text2,Num):
         import re
         cadena1=re.split('\.',text1)
         cadena2=re.split('\.',text2)
-        
-        if len(cadena1)>=len(cadena2):
-            relleno=len(cadena1)-len(cadena2)
-            for i in range(relleno):
-                cadena2.append("")
-            filas=len(cadena1)
-        else:
-            relleno=len(cadena2)-len(cadena1)
-            for i in range(relleno):
-                cadena1.append("")
-            filas=len(cadena2)
-        matriz = []
-        for i in range(filas):
-            matriz.append([])
-            for j in range (filas) :
-                valor = "" 
-                matriz[i].append(valor)
-        matrizC = []
-        for i in range(filas):
-            matrizC.append([])
-            for j in range (filas) :
-                valor = "" 
-                matrizC[i].append(valor)
-        import textdistance
-        for i in range(filas):
-            for j in range(filas):
-                matriz[i][j]=round(textdistance.cosine(cadena1[i],cadena2[j]),3)
-        for i in range(filas):
-            for j in range(filas):
-                matrizC[i][j]=cadena1[i],cadena2[j]
-        cadenas=[]
-        for fila in matrizC:
-            for elemento in fila:
-                cadenas.append(elemento)
-        valores=[]
-        valoresp=[]
-        for fila in matriz:
-            for elemento in fila:
-                valores.append(elemento)
-                valoresp.append(elemento)
-        #num = 10
-        maxval=[]
-
-        for i in valoresp:
-            maxval.append(max(valoresp))
-            valoresp.remove(max(valoresp))
-            if len(maxval)==num: break
-
-        indice=0
+        comparaciones = len(cadena1)*len(cadena2)
+        combinaciones1=[]
+        combinacionesO=[]
+        oraciones=[]
+        for j in range(len(cadena1)):
+            for i in range(len(cadena2)):
+                combinaciones1.append(textdistance.cosine(cadena1[j],cadena2[i]))
+                combinacionesO.append(textdistance.cosine(cadena1[j],cadena2[i]))
+                oraciones.append(str(cadena1[j]+" | "+cadena2[i]))
+        combinacionesO.sort(reverse=True)
+        Ncomb=[]
+        Ncomb.append(combinacionesO[:Num])
         indices=[]
-        j=0
-        for i in valores:
-            for j in maxval:
-                if (i==j):
-                    indices.append(indice)
-            indice+=1
+        for i in range(Num):
+            indices.append(combinaciones1.index(Ncomb[0][i]))
+        dato=[[1]*3 for j in range(Num)]
+        for i in range(Num):
+            dato[i]=i+1,round(Ncomb[0][i],3),oraciones[indices[i]]
+        return dato
 
-        cadenasI=[]
-        index=0
-        for i in cadenas:
-            for j in indices:        
-                if (index==j):
-                    cadenasI.append(i)
 
-            index+=1
-        for fila in cadenasI:
-            print("", end="|")
-            for elemento in fila:
-                print("{}".format(elemento), end="|")
-            print ("")
-        return ('\n\n'.join(map(str, cadenasI)))
     numero=request.form['vol']
-    res8=str(Aproximadas(format(req.form['dat3']),format(req.form['dat4']),int(numero)))
-    return render_template("/App.html",textoC=format(req.form['dat3']),textoD=format(req.form['dat4']),number=numero,resulta8=res8)
+    headings = ("Lugar ","Medida","Textos comparados")
+    data=Aproximadas(format(req.form['dat3']),format(req.form['dat4']),int(numero))
+    #pd.DataFrame(Aproximadas(format(req.form['dat3']),format(req.form['dat4']),int(numero)), columns=['numero','cuadrado'])
+    #str(Aproximadas(format(req.form['dat3']),format(req.form['dat4']),int(numero)))
+    return render_template("/App.html",textoC=format(req.form['dat3']),textoD=format(req.form['dat4']),number=numero,headings=headings,data=data)#,resulta8=res8)
 
 if __name__ == '__main__':
     app.debug=True
