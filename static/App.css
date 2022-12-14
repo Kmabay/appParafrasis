@@ -99,7 +99,7 @@ body{
     gap: 10px;
     grid-template:
     "header" 100px
-    "instrucciones 1" auto
+    "instrucciones1" auto
     "textos" auto
     "sidebarC"100px
     "sidebarD"100px
@@ -113,7 +113,8 @@ body{
     "sidebarAprox" auto
     "separador2" 30px
     "readme" auto
-    "footer" 50px;
+    "logo" auto
+    "footer" 60px;
 }
 
 @media(min-width:700px){

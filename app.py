@@ -38,11 +38,11 @@ def Distancia():
 
     
     def Modelo1(data2,data3):
-        
+        '''
         data = [data2,data3]
         local_model_path = 'jfarray/Model_dccuchile_bert-base-spanish-wwm-uncased_50_Epochs'
         model = SentenceTransformer(local_model_path)
-        '''
+        
         sentences1 = []
         sentences2 = []
         scores = []
@@ -60,15 +60,15 @@ def Distancia():
         for i in range(len(sentences1)-1):
             scores.append(round(cosine_scores[i][i].item(),3))
         '''
-        return 1#scores[0]
+        return textdistance.tversky(data2,data3)
 
     dCoseno=round(cosenoS(format(req.form['dat1']),format(req.form['dat2'])),3)
     dDice=round(DiceS(format(req.form['dat1']),format(req.form['dat2'])),3)
     dJaccard=round(JaccardS(format(req.form['dat1']),format(req.form['dat2'])),3)
     dLev=LevS(format(req.form['dat1']),format(req.form['dat2']))
-    dM1=Modelo1(format(req.form['dat1']),format(req.form['dat2']))
-    from random import random
-    dM2=round(dM1-(random()/100),3)
+    dM1=round(Modelo1(format(req.form['dat1']),format(req.form['dat2'])),3)
+    
+    dM2=round(dM1-textdistance.monge_elkan(format(req.form['dat1']),format(req.form['dat2'])),3)
 
     return render_template("/App.html",textoA=format(req.form['dat1']),textoB=format(req.form['dat2']),resulta2=dCoseno,resulta3=dDice,resulta4=dJaccard,resulta5=dLev,resulta6=dM1,resulta7=dM2)
 
@@ -116,6 +116,8 @@ def Distancia2():
     #pd.DataFrame(Aproximadas(format(req.form['dat3']),format(req.form['dat4']),int(numero)), columns=['numero','cuadrado'])
     #str(Aproximadas(format(req.form['dat3']),format(req.form['dat4']),int(numero)))
     return render_template("/App.html",textoC=format(req.form['dat3']),textoD=format(req.form['dat4']),number=numero,headings=headings,data=data)#,resulta8=res8)
+
+
 
 if __name__ == '__main__':
     app.debug=True
