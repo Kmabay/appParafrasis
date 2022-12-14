@@ -30,6 +30,14 @@ body{
     grid-area: header;
     background-color: #004a85;
 }
+.instrucciones1{
+    grid-area: instrucciones1;
+    background-color: #f2f2f2;
+}
+.instrucciones2{
+    grid-area: instrucciones2;
+    background-color: #f2f2f2;
+}
 .sidebarC{
     grid-area: sidebarC;
     background-color: #f2f2f2;
@@ -70,6 +78,10 @@ body{
     grid-area: readme;
     background-color: #f2f2f2;
 }
+.logo{
+    grid-area: logo;
+    background-color: #f2f2f2;
+}
 .separador{
     grid-area: separador;
     background-color: #004a85;
@@ -87,6 +99,7 @@ body{
     gap: 10px;
     grid-template:
     "header" 100px
+    "instrucciones 1" auto
     "textos" auto
     "sidebarC"100px
     "sidebarD"100px
@@ -95,9 +108,10 @@ body{
     "sidebarM1"100px
     "sidebarM2"100px
     "separador" 30px
+    "instrucciones2" auto
     "textos2" auto
     "sidebarAprox" auto
-    "separador" 30px
+    "separador2" 30px
     "readme" auto
     "footer" 50px;
 }
@@ -106,13 +120,15 @@ body{
     .grid-container{
         grid-template:
         "header  header header header  header header" 100px
+        "instrucciones1 instrucciones1 instrucciones1 instrucciones1 instrucciones1 instrucciones1" auto
         "textos textos textos textos textos textos" auto
         "sidebarC sidebarC sidebarD sidebarD sidebarJ sidebarJ"   50px
         "sidebarL sidebarL sidebarM1 sidebarM1 sidebarM2 sidebarM2"   50px
         "separador  separador separador separador  separador separador" 30px
+        "instrucciones2 instrucciones2 instrucciones2 instrucciones2 instrucciones2 instrucciones2" auto
         "textos2 textos2 textos2 sidebarAprox sidebarAprox sidebarAprox" auto
         "separador2  separador2 separador2 separador2  separador2 separador2" 30px
-        "readme readme readme readme readme readme" auto
+        "readme readme readme readme logo logo" auto
         "footer  footer footer footer  footer footer" 50px/
         auto auto auto auto auto auto
         ;

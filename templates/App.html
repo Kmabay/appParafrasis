@@ -15,7 +15,9 @@
             Instituto de Ingeniería UNAM
         </div>
     </header>
-
+    <nav class="instrucciones1" style="text-align: left;font-size: medium;">
+        <p>Información: En las siguientes cajas de texto puede usted almacenar dos enunciados distintos para medir la similitud semántica entre ellos, según nuestra selección de algoritmos.</p>
+    </nav>
     <nav class="sidebarC">
         <p  id="dist" rows="10" cols="30"name="resulta2"
             readonly placeholder="Distancia">
@@ -70,6 +72,9 @@
 
         </article>
     </form>
+    <nav class="instrucciones2"style="text-align: left;font-size: medium;">
+        <p>Información: En éstas otras cajas de texto, al introducir una secuencia de oraciones delimitadas por un punto, puede consultar las comparaciones con mayor similitud según el algoritmo que ustede escoja.</p>
+    </nav>
     <form class="textos2" action="{{url_for('Distancia2')}}"method="post">
         <article class="textos2">
             <br>
@@ -107,25 +112,29 @@
     <nav class="readme">
         <div  style="text-align: center;color: rgb(0, 0, 0);font-size: small;">
             <br>
-            <h4>Acerca de</h4>
+            <h4 style="text-align: left">ACERCA DE</h4>
             <p style="text-align: justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suspendisse faucibus interdum posuere lorem ipsum dolor sit. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit amet. Adipiscing tristique risus nec feugiat. Imperdiet dui accumsan sit amet. Cursus vitae congue mauris rhoncus aenean vel. Et molestie ac feugiat sed. 
-                <br>Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu. Orci eu lobortis elementum nibh tellus molestie. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Proin fermentum leo vel orci porta. Mi tempus imperdiet nulla malesuada pellentesque elit. In nisl nisi scelerisque eu ultrices vitae. Vel facilisis volutpat est velit egestas dui. Semper feugiat nibh sed pulvinar proin.
+                AppParafrasis es una aplicación para la detección automática de paráfrasis que permite una comparación entre diferentes técnicas y algoritmos. Es capaz de trabajar con enunciados completos o bien haciendo un ránking the oraciones comparadas por pares entre dos textos.
             </p>
             <br>
             
-            <h4>Participantes</h4>
+            <h4 style="text-align: left">PARTICIPANTES. </h4>
             <p style="text-align: justify">
-                Orci eu lobortis elementum nibh tellus molestie. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Proin fermentum leo vel orci porta. 
+                Dirección: Gemma Bel-Enguix, Helena Gómez-Adorno, Gerardo Sierra. <br>
+                Diseño de algoritmos: Germán Ortiz-Barajas, Alexi Cabrera, Juan Vasquez, Francisco López
             </p>
             <br>
-            <h4>Agradecimientos</h4>
+            <h4 style="text-align: left">AGRADECIMIENTOS</h4>
             <p style="text-align: justify">
-                Morbi tempus iaculis urna id volutpat. Velit ut tortor pretium viverra suspendisse. In iaculis nunc sed augue lacus viverra vitae. Id consectetur purus ut faucibus pulvinar elementum. Vitae congue mauris rhoncus aenean vel. Facilisis mauris sit amet massa.
+                Esta aplicación se ha desarrollado gracias al apoyo de Conacyt, proyecto CB A1-S-27780 y PAPIIT TA400121.
             </p>
             
             <br><br>
     </div>
+    </nav>
+    <nav class="logo">
+        <div margin:auto;><img src="/static/img/logo-conacyt.png" height="110px" width="400px"/></div>
+        <div margin:auto;><img src="/static/img/logo-papiit.png" height="110px" width="240px"/></div>
     </nav>
     <footer class="footer">
         <div style="text-align: center;color: aliceblue;font-size: x-small;">
