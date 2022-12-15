@@ -102,10 +102,15 @@ def Distancia2():
         Ncomb=[]
         Ncomb.append(combinacionesO[:Num])
         indices=[]
-        for i in range(Num):
+        elementos=0
+        if comparaciones < Num:
+            elementos = comparaciones
+        else:
+            elementos = Num
+        for i in range(elementos):
             indices.append(combinaciones1.index(Ncomb[0][i]))
         dato=[[1]*3 for j in range(Num)]
-        for i in range(Num):
+        for i in range(elementos):
             dato[i]=i+1,round(Ncomb[0][i],3),oraciones[indices[i]]
         return dato
 
